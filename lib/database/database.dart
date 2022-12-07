@@ -36,8 +36,7 @@ CREATE TABLE customPokemon(
             idCustomPokemon INTEGER PRIMARY KEY AUTOINCREMENT,
             name STRING,
             abilities STRING,
-            image STRING,
-            type STRING
+            image STRING
           )
 ''');
   await db.execute("PRAGMA foreign_keys=ON");

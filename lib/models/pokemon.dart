@@ -24,8 +24,7 @@ class Pokemon {
     return {
       'name': name,
       'image': image,
-      'type': type,
-      // 'abilities': abilities
+      'abilities': abilities.toString().replaceAll("[", "").replaceAll("]", "")
     };
   }
 
@@ -33,8 +32,8 @@ class Pokemon {
     return Pokemon(
       name: m['name'], 
       image: m['image'], 
-      type: [m['type'].toString()], 
-      abilities: [""] as List<String>
+      abilities: [m['abilities'].toString()], 
+      type: [""]
     );
   }
 
