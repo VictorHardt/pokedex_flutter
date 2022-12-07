@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:pokedex_flutter/database/database.dart';
 import 'package:pokedex_flutter/error/failure.dart';
 import 'package:pokedex_flutter/screens/custom_pokemon_page.dart';
 import 'package:pokedex_flutter/screens/error_screen.dart';
@@ -13,7 +14,7 @@ class CustomPokemonConatiner extends StatelessWidget {
   Widget build(BuildContext context) {
 
     loadCustomPokemons() async {
-      return await [];
+      return await DB.instance.getAllCustomPokemons();
     }
 
     return FutureBuilder(

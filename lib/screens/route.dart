@@ -7,6 +7,7 @@ import 'package:pokedex_flutter/container/custom_pokemon_container.dart';
 import 'package:pokedex_flutter/container/custom_pokemon_details_container.dart';
 import 'package:pokedex_flutter/container/detail_container.dart';
 import 'package:pokedex_flutter/container/home_container.dart';
+import 'package:pokedex_flutter/models/pokemon.dart';
 import 'package:pokedex_flutter/screens/add_custom_pokemon_page.dart';
 import 'package:pokedex_flutter/screens/custom_pokemon_details_page.dart';
 import 'package:pokedex_flutter/screens/tab_controller.dart';
@@ -50,7 +51,7 @@ class PokedexRoute extends StatelessWidget {
         if(settings.name == '/customDetails') {
           return MaterialPageRoute(
             builder: (context) {
-              return CustomPokemonDetailsConatiner();
+              return CustomPokemonDetailsPage(pokemon: settings.arguments as Pokemon);
             }
           );
         }

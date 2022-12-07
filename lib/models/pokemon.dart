@@ -1,12 +1,13 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 class Pokemon {
-  final String name;
-  final String image;
-  final List<String> type;
-  final List<dynamic> abilities;
+  String name;
+  String image;
+  List<String> type;
+  List<dynamic> abilities;
 
    Pokemon({required this.name, required this.image, required this.type, required this.abilities});
 
@@ -16,6 +17,24 @@ class Pokemon {
       image: pokemonJson['sprites']['front_default'],
       type: (pokemonJson['types'] as List<dynamic>).map((type) => type['type']['name'] as String).toList(),
       abilities: (pokemonJson['abilities'] as List<dynamic>).map((ability) => ability['ability']['name'] as String).toList()
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'image': image,
+      'type': type,
+      // 'abilities': abilities
+    };
+  }
+
+  factory Pokemon.fromBD(Map<String, dynamic> m) {
+    return Pokemon(
+      name: m['name'], 
+      image: m['image'], 
+      type: [m['type'].toString()], 
+      abilities: [""] as List<String>
     );
   }
 

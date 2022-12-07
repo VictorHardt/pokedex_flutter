@@ -14,7 +14,40 @@ class CustomPokemonDetailsPage extends StatelessWidget {
       body: Stack(
         children: [
           PokemonDetailsAppBar(pokemon: pokemon),
-          PokemonDetailsImage(pokemon: pokemon),
+          Positioned(
+            top: 80,
+            left: 0,
+            right: 0,
+            height: 350,
+            child: Container(
+              color: pokemon.baseColor,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          pokemon.name, 
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          )
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 250,
+                    width: double.infinity,
+                    child: Image.asset(pokemon.image, scale: 0.3)
+                  ),
+                ],
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 200),
             child: PokemonDetailsTypeAbilities(pokemon: pokemon),

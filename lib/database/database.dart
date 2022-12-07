@@ -1,4 +1,5 @@
 import 'package:path/path.dart';
+import 'package:pokedex_flutter/models/pokemon.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DB {
@@ -35,8 +36,39 @@ CREATE TABLE customPokemon(
             idCustomPokemon INTEGER PRIMARY KEY AUTOINCREMENT,
             name STRING,
             abilities STRING,
-            image STRING
+            image STRING,
+            type STRING
           )
 ''');
+  await db.execute("PRAGMA foreign_keys=ON");
+  }
+
+  Future<void> inserirCustomPokemon(Pokemon pokemon) async {
+    try {
+      final db = await instance.database;
+      var pokeomnMap = pokemon.toMap();
+
+      await db.insert(
+        'customPokemon',
+        pokeomnMap,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    } catch (e) {
+      print("Erro" + e.toString());
+    }
+  }
+
+  Future<List<Pokemon>> getAllCustomPokemons() async {
+    final db = await instance.database;
+
+    final List<Map<String, dynamic>> maps =
+        await db.rawQuery('SELECT * FROM customPokemon');
+
+    List<Pokemon> retData = [];
+    for (var m in maps) {
+      retData.add(Pokemon.fromBD(m));
+    }
+
+    return retData;
   }
 }

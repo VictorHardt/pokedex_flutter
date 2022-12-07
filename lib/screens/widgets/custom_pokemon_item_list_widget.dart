@@ -14,7 +14,7 @@ class CustomPokemonItemListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed('/customDetails');
+        Navigator.of(context).pushNamed('/customDetails', arguments: pokemon);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -24,7 +24,7 @@ class CustomPokemonItemListWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Flexible(
@@ -37,17 +37,8 @@ class CustomPokemonItemListWidget extends StatelessWidget {
                   )
                 ),
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: pokemon.type.map((e) => PokemonTypeWidget(name: e)).toList()
-                  ),
-                  Flexible(child: Image.network(pokemon.image))
-                ],
-              )
+              SizedBox(height: 10),
+              Image.asset(pokemon.image, scale: 6)
             ],
           ),
         ),
