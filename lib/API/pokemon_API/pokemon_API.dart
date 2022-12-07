@@ -18,19 +18,12 @@ class PokemonAPI implements IPokemonAPI {
   Future<List<Pokemon>> getAllPokemons() async {
     try {
       final generalResponse = await dio.get(PokemonAPIUrlConfig.allPokemonsURL);
-      var pokemonList = [] as List<dynamic>;
+      var pokemonList = [];
       for (var pokemon in generalResponse.data['results']) {
         var pokemonResponse = await dio.get(pokemon['url']);
         pokemonList.add(pokemonResponse.data);
       }
       return pokemonList.map((pokemonJson) => Pokemon.fromMap(pokemonJson)).toList();
-
-
-
-
-      // final generalResponse = await dio.get(PokemonAPIUrlConfig.allPokemonsURL);
-      // final pokemonList = generalResponse.data['results'] as List<dynamic>;
-      // return pokemonList.map((pokemonJson) => Pokemon.fromMap(pokemonJson)).toList();
     } catch (e) {
       throw Failure(message: 'Erro ao carregar os dados!');
     }

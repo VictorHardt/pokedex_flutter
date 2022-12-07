@@ -15,13 +15,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {  
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text('Pokedex'),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.menu))
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         child: GridView.count(
