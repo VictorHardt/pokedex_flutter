@@ -29,7 +29,6 @@ class DB {
   }
 
   Future _createDB(Database db, int version) async {
-    // Necessário para o funcionamento do delete em cascata
 
     await db.execute('''
 CREATE TABLE customPokemon(

@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:pokedex_flutter/API/pokemon_API/pokemon_API.dart';
 import 'package:pokedex_flutter/database/database.dart';
 import 'package:pokedex_flutter/models/pokemon.dart';
+import 'package:pokedex_flutter/screens/route.dart';
 
 class AddCustomPokemonPage extends StatefulWidget {
   const AddCustomPokemonPage({super.key});
@@ -50,6 +53,14 @@ class _AddCustomPokemonPageState extends State<AddCustomPokemonPage> {
                     abilities: [_pokemonAbilities.text]
                   )
                 );
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => PokedexRoute(
+                      api: PokemonAPI(
+                        dio: Dio()
+                      )
+                    )
+                  ), ((route) => false));
               }, 
               child: Text("Salvar")
             )

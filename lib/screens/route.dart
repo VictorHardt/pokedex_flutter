@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:pokedex_flutter/API/pokemon_API/pokemon_API.dart';
 import 'package:pokedex_flutter/container/custom_pokemon_container.dart';
-import 'package:pokedex_flutter/container/custom_pokemon_details_container.dart';
 import 'package:pokedex_flutter/container/detail_container.dart';
 import 'package:pokedex_flutter/container/home_container.dart';
 import 'package:pokedex_flutter/models/pokemon.dart';

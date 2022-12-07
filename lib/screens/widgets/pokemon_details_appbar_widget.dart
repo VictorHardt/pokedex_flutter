@@ -23,15 +23,3 @@ class PokemonDetailsAppBar extends StatelessWidget {
     );
   }
 }
-
-// Column(
-//       children: [
-//         Flexible(child: Image.network(pokemon.image)),
-//         Column(
-//           children: pokemon.type.map((e) => PokemonTypeWidget(name: e)).toList(),
-//         ),
-//         Column(
-//           children: pokemon.abilities.map((e) => PokemonTypeWidget(name: e)).toList(),
-//         )
-//       ],
-//     );
